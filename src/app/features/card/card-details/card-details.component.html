@@ -1,0 +1,46 @@
+<div *ngIf="card">
+  <mat-card class="card-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-header-image"></div>
+      <mat-card-title>{{card.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <img *ngIf="card.neutralMana != 0" src="/assets/color/{{card.neutralMana}}.gif">
+        <img *ngFor="let item of blueMana" src="/assets/color/u.gif"/>
+        <img *ngFor="let item of whiteMana" src="/assets/color/w.gif"/>
+        <img *ngFor="let item of blackMana" src="/assets/color/b.gif"/>
+        <img *ngFor="let item of greenMana" src="/assets/color/g.gif"/>
+        <img *ngFor="let item of redMana" src="/assets/color/r.gif"/>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="/assets/images/{{card.editionName}}/{{card.codeName}}.jpg" alt="{{card.id}}">
+    <mat-card-content>
+      <p>
+        <span class="editionLogo">
+          <img mat-card-image src="{{edition.urlLogo}}" alt="{{edition.id}}"></span>
+          <span class="rarity">
+          <img mat-card-image src="/assets/color/{{rarity.label}}.gif" alt="{{edition.id}}"></span>
+        <span>{{card.mechanic}}</span>
+        <span>{{card.codeName}}</span>
+        <span>{{card.commentary}}</span>
+      </p>
+    </mat-card-content>
+  {{card.power}} / {{card.defense}}
+    <mat-card-footer>
+
+    </mat-card-footer>
+    <mat-card-actions>
+      <a #tooltip="matTooltip"
+      matTooltip="Update this card"
+      [matTooltipPosition]="'above'" mat-button href="./admin/card/update/{{card.id}}"><mat-icon aria-hidden="false" aria-label="Example settings icon">settings</mat-icon></a>
+      <button #tooltip="matTooltip"
+      matTooltip="Delete this card"
+      [matTooltipPosition]="'above'" mat-button (click)="deleteCard()"><mat-icon aria-hidden="false" aria-label="Example hide_source icon">hide_source</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+
+
+
+

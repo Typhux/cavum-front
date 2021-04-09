@@ -1,0 +1,49 @@
+<h1>Games</h1>
+
+<button #tooltip="matTooltip"
+      matTooltip="Launch a new game"
+      [matTooltipPosition]="'above'" mat-button (click)="newGame()"><mat-icon aria-hidden="false" aria-label="Example health_and_safety icon">health_and_safety</mat-icon> New Game</button>
+
+<div class="games">
+  <div class="game" *ngFor="let game of games">
+    <mat-card class="card-card">
+      <mat-card-header>
+        <div mat-card-avatar class="card-header-image"></div>
+        <mat-card-title><img mat-card-image src="{{game.editionLogo}}"></mat-card-title>
+        <mat-card-subtitle>
+          <span>{{game.date | date}}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="land">
+          <div class="contentGame">
+            <span>
+              {{game.numberTiles}} lands discovered
+            </span>
+            <div>
+              {{game.settings.character.blueMana}} <img src="/assets/color/u.gif"/>
+              {{game.settings.character.whiteMana}} <img src="/assets/color/w.gif"/>
+              {{game.settings.character.blackMana}} <img src="/assets/color/b.gif"/>
+              {{game.settings.character.greenMana}} <img src="/assets/color/g.gif"/>
+              {{game.settings.character.redMana}} <img src="/assets/color/r.gif"/>
+            </div>
+          </div>
+          <span class="level">
+            Level {{game.level}}
+          </span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <a #tooltip="matTooltip"
+        matTooltip="Launch this game"
+        [matTooltipPosition]="'above'" mat-button href="./game/{{game.id}}"><mat-icon aria-hidden="false" aria-label="Example label_important icon">label_important</mat-icon></a>
+        <button #tooltip="matTooltip"
+        matTooltip="Copy seed"
+        [matTooltipPosition]="'above'" mat-button (click)="copyGuid(game.guid)"><mat-icon aria-hidden="false" aria-label="Example content_copy icon">content_copy</mat-icon></button>
+        <button #tooltip="matTooltip"
+        matTooltip="Delete this game"
+        [matTooltipPosition]="'above'" mat-button (click)="deleteGame(game.id)"><mat-icon aria-hidden="false" aria-label="Example hide_source icon">hide_source</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

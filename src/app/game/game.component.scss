@@ -1,0 +1,31 @@
+.contentGame{
+  display: flex;
+  flex-direction: column;
+}
+
+.land{
+  font-size: large;
+  display: flex;
+  flex-direction: row;
+}
+
+.level{
+  align-self: center;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+mat-card{
+  width: 400px;
+}
+
+.games{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .game{
+    margin: 10px;
+  }
+}

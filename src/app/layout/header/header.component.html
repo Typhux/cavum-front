@@ -1,0 +1,10 @@
+<a mat-button href="./game">Game</a>
+<button mat-button [matMenuTriggerFor]="menu">Admin</button>
+<mat-menu #menu="matMenu">
+  <a href="./admin/edition" mat-menu-item>Edition</a>
+  <a href="./admin/card" mat-menu-item>Card</a>
+  <a href="./admin/search" mat-menu-item>Search</a>
+  <a href="./admin/emulator" mat-menu-item>Emulator</a>
+  <a href="./admin/treatment" mat-menu-item>Treatement</a>
+</mat-menu>
+<!-- <a mat-button href="./about">About</a> -->

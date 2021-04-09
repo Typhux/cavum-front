@@ -1,0 +1,89 @@
+<div *ngIf="edition">
+  <mat-card class="edition-card">
+    <mat-card-header>
+      <div mat-card-avatar class="edition-header-image"></div>
+      <mat-card-title>{{edition.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{edition.urlLogo}}" alt="{{edition.id}}">
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Update this edition"
+      [matTooltipPosition]="'above'" mat-button *ngIf="!update" (click)="update = true"><mat-icon aria-hidden="false" aria-label="Example settings icon">settings</mat-icon></button>
+      <a #tooltip="matTooltip"
+      matTooltip="Add a card to this edition"
+      [matTooltipPosition]="'above'" mat-button href="./admin/card/new/{{edition.id}}"><mat-icon aria-hidden="false" aria-label="Example settings_cell icon">settings_cell</mat-icon></a>
+      <button #tooltip="matTooltip"
+      matTooltip="Delete this edition"
+      [matTooltipPosition]="'above'" mat-button type="button" (click)="deleteEdition()"><mat-icon aria-hidden="false" aria-label="Example hide_source icon">hide_source</mat-icon></button>
+      <button #tooltip="matTooltip"
+      matTooltip="Sort the card not treated"
+      [matTooltipPosition]="'above'" mat-button type="button" (click)="sortNotTreated()"><mat-icon aria-hidden="false" aria-label="Example edit_off icon">edit_off</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+  <div *ngIf="update">
+    <div>
+      <div class="inputForm">
+        <label for="title"> Title </label>
+        <input type="text" id="title" [(ngModel)]="edition.title" required/>
+      </div>
+      <div class="inputForm">
+        <label for="title"> Subtitle </label>
+        <input type="text" id="title" [(ngModel)]="edition.subtitle"/>
+      </div>
+    </div>
+    <div>
+      <div class="inputForm">
+        <label for="urlLogo"> Url logo </label>
+        <input type="text" id="urlLogo" [(ngModel)]="edition.urlLogo"/>
+      </div>
+      <div class="inputForm">
+        <label for="title"> Description </label>
+        <textarea id="title" [(ngModel)]="edition.description"></textarea>
+      </div>
+    </div>
+    <div>
+      <button #tooltip="matTooltip"
+      matTooltip="Done"
+      [matTooltipPosition]="'above'" mat-button (click)="updateEdition()"><mat-icon aria-hidden="false" aria-label="Example done icon">done</mat-icon></button>
+      <button #tooltip="matTooltip"
+      matTooltip="Cancel"
+      [matTooltipPosition]="'above'" mat-button (click)="update = false"><mat-icon aria-hidden="false" aria-label="Example close icon">close</mat-icon></button>
+    </div>
+  </div>
+
+  <table mat-table height="300px;" [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let element" class="cell"> <img src="/assets/images/{{element.editionName}}/{{element.codeName}}.jpg"/> </td>
+    </ng-container>
+    <ng-container matColumnDef="commentary">
+      <th mat-header-cell *matHeaderCellDef> Commentary </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.commentary}}</td>
+    </ng-container>
+    <ng-container matColumnDef="mechanic">
+      <th mat-header-cell *matHeaderCellDef> Mechanic </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.mechanic}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subType">
+      <th mat-header-cell *matHeaderCellDef> SubType </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.subType}} </td>
+    </ng-container>
+    <ng-container matColumnDef="codeName">
+      <th mat-header-cell *matHeaderCellDef> CodeName </th>
+      <td mat-cell *matCellDef="let element" class="cell"> {{element.codeName}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goTo(row.id)" [ngClass]="{'not-treated': !row.isTreated }"></tr>
+  </table>
+</div>

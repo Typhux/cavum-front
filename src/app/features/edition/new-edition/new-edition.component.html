@@ -1,0 +1,23 @@
+<h1>Create New Edition</h1>
+<div style="display: flex; flex-direction: column; width: 230px;">
+  <label for="title">Title : </label>
+  <input type="text" id="title" [(ngModel)]="edition.title" required/>
+
+  <label for="title">Subtitle : </label>
+  <input type="text" id="title" [(ngModel)]="edition.subtitle"/>
+
+  <label for="urlLogo">Url logo : </label>
+  <input type="text" id="urlLogo" [(ngModel)]="edition.urlLogo"/>
+
+  <label for="title">Description : </label>
+  <textarea id="title" [(ngModel)]="edition.description"></textarea>
+  <img *ngIf="edition.urlLogo" src="{{edition.urlLogo}}"/>
+</div>
+
+
+  <button #tooltip="matTooltip"
+  matTooltip="Done"
+  [matTooltipPosition]="'above'" mat-button (click)="createEdition()"><mat-icon aria-hidden="false" aria-label="Example done icon">done</mat-icon></button>
+  <a
+  matTooltip="Cancel"
+  [matTooltipPosition]="'above'" mat-button href="./admin/edition"><mat-icon aria-hidden="false" aria-label="Example close icon">close</mat-icon></a>

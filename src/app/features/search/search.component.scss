@@ -1,0 +1,51 @@
+.filter{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.formInput{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+td{
+  text-align: center;
+  img{
+    width: 70px;
+  }
+}
+
+th{
+  text-align: center !important;
+}
+
+.mat-row{
+  cursor: pointer;
+}
+
+.mat-row:hover{
+  background-color: rgba(11, 111, 224, 0.466);
+}
+
+table{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.not-treated{
+  background-color: rgb(160, 20, 20);
+}
+
+.not-treated:hover{
+  background-color: rgb(216, 151, 151);
+}
+
+.edition-card {
+  max-width: 400px;
+}
+
+.edition-header-image {
+  background-size: cover;
+}

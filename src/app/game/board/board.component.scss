@@ -1,0 +1,67 @@
+.Island{
+  background-color: rgb(70, 141, 223);
+}
+.Plain{
+  background-color: rgb(202, 211, 124);
+}
+
+.Mountain{
+  background-color: rgb(207, 102, 84);
+}
+
+.Forest{
+  background-color: rgb(24, 92, 52);
+}
+
+.Swamp{
+  background-color: rgb(80, 82, 83);
+}
+
+.board{
+
+  display: flex;
+  flex-direction: row;
+
+  .character{
+    min-width: 330px;
+    text-align: center;
+
+    .pv{
+      margin-top: 10px;
+    }
+
+    .mana{
+      margin-top: 10px;
+    }
+
+    mat-card{
+      height: 100%;
+    }
+
+    .artifact{
+      margin: 10px;
+    }
+  }
+
+  .inventory{
+    margin-right: 60px;
+    min-width: 330px;
+    text-align: center;
+
+    mat-card{
+      height: 100%;
+    }
+  }
+
+.tiles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    margin: auto;
+
+    .tile{
+      margin: 10px;
+    }
+  }
+}

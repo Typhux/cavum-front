@@ -1,0 +1,142 @@
+<div *ngIf="query">
+  <div class="filter">
+    <div class="formInput">
+    <label for="edition">Edition</label>
+    <select id="edition" [(ngModel)]="query.editionId">
+      <option *ngFor="let edition of editions" value="{{edition.id}}">{{edition.title}}</option>
+    </select>
+  </div>
+
+  <div class="formInput">
+    <label for="title">Title</label>
+    <input type="text" id="title" [(ngModel)]="query.title" required/>
+  </div>
+
+    <div class="formInput">
+    <label for="type">Type</label>
+    <select id="type" [(ngModel)]="query.type">
+      <option *ngFor="let type of types" value="{{type.id}}">{{type.label}}</option>
+    </select>
+  </div>
+
+    <div class="formInput">
+    <label for="minbluemana">Min Blue mana</label>
+    <input type="number" id="minbluemana" [(ngModel)]="query.minBlueMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxbluemana">Max Blue mana</label>
+    <input type="number" id="maxbluemana" [(ngModel)]="query.maxBlueMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="mingreenMana">Min Green mana</label>
+    <input type="number" id="mingreenMana" [(ngModel)]="query.minGreenMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxgreenMana">Max Green mana</label>
+    <input type="number" id="maxgreenMana" [(ngModel)]="query.maxGreenMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="minwhiteMana">Min White mana</label>
+    <input type="number" id="minwhiteMana" [(ngModel)]="query.minWhiteMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxwhiteMana">Max White mana</label>
+    <input type="number" id="maxwhiteMana" [(ngModel)]="query.maxWhiteMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="minblackMana">Min Black mana</label>
+    <input type="number" id="minblackMana" [(ngModel)]="query.minBlackMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxblackMana">Max Black mana</label>
+    <input type="number" id="maxblackMana" [(ngModel)]="query.maxBlackMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="minredMana">Min Red mana</label>
+    <input type="number" id="minredMana" [(ngModel)]="query.minRedMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxredMana">Max Red mana</label>
+    <input type="number" id="maxredMana" [(ngModel)]="query.maxRedMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="minneutralMana">Min Neutral mana</label>
+    <input type="number" id="minneutralMana" [(ngModel)]="query.minNeutralMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="maxneutralMana">Max Neutral mana</label>
+    <input type="number" id="maxneutralMana" [(ngModel)]="query.maxNeutralMana"/>
+  </div>
+
+    <div class="formInput">
+    <label for="levelCard">Level card</label>
+    <input type="number" id="levelCard" [(ngModel)]="query.levelCard"/>
+  </div>
+
+    <div class="formInput">
+    <label for="rarity">Rarity</label>
+    <select id="rarity" [(ngModel)]="query.rarity">
+      <option *ngFor="let rarity of rarities" value="{{rarity.id}}">{{rarity.label}}</option>
+    </select>
+  </div>
+</div>
+
+<button #tooltip="matTooltip"
+matTooltip="Launch research"
+[matTooltipPosition]="'above'" mat-button (click)="search()"><mat-icon aria-hidden="false" aria-label="Example search icon">search</mat-icon></button>
+<button #tooltip="matTooltip"
+matTooltip="Reset filter"
+[matTooltipPosition]="'above'" mat-button (click)="reset()"><mat-icon aria-hidden="false" aria-label="Example highlight_off icon">highlight_off</mat-icon></button>
+
+
+<table *ngIf="results.length > 0" mat-table height="300px;" [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.title}} </td>
+  </ng-container>
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element" class="cell"> <img src="/assets/images/{{element.editionName}}/{{element.codeName}}.jpg"/> </td>
+  </ng-container>
+  <ng-container matColumnDef="edition">
+    <th mat-header-cell *matHeaderCellDef> Edition </th>
+    <td mat-cell *matCellDef="let element" class="cell"> <img src="{{element.editionLogo}}"/> </td>
+  </ng-container>
+  <ng-container matColumnDef="commentary">
+    <th mat-header-cell *matHeaderCellDef> Commentary </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.commentary}}</td>
+  </ng-container>
+  <ng-container matColumnDef="mechanic">
+    <th mat-header-cell *matHeaderCellDef> Mechanic </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.mechanic}} </td>
+  </ng-container>
+  <ng-container matColumnDef="subType">
+    <th mat-header-cell *matHeaderCellDef> SubType </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.subType}} </td>
+  </ng-container>
+  <ng-container matColumnDef="codeName">
+    <th mat-header-cell *matHeaderCellDef> CodeName </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.codeName}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goTo(row.id)" [ngClass]="{'not-treated': !row.isTreated }"></tr>
+</table>
+
+<div *ngIf="results">
+  <span *ngIf="results.length == 0">No result !!!</span>
+</div>

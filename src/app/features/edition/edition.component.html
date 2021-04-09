@@ -1,0 +1,28 @@
+<h1>Edition</h1>
+
+<div *ngFor="let edition of editions" style="margin-bottom: 40px">
+
+  <mat-card class="edition-card">
+    <mat-card-header>
+      <div mat-card-avatar class="edition-header-image"></div>
+      <mat-card-title>{{edition.title}}</mat-card-title>
+      <mat-card-subtitle>{{edition.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{edition.urlLogo}}" alt="{{edition.id}}">
+    <mat-card-content>
+      <p>
+        {{edition.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a #tooltip="matTooltip"
+      matTooltip="Go to this edition"
+      [matTooltipPosition]="'above'" mat-button href="./admin/edition/{{edition.id}}"><mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon></a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<a #tooltip="matTooltip"
+matTooltip="New edition"
+[matTooltipPosition]="'above'" mat-button href="./admin/edition/new"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></a>
+
