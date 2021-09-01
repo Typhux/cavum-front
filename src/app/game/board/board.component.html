@@ -2,7 +2,7 @@
   <div class="character">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Character Level {{game.level}}</mat-card-title>
+        <mat-card-title>Character Level {{game.settings.character.level}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="mana">
@@ -14,7 +14,7 @@
       </div>
 
       <div class="pv">
-        {{game.settings.character.restingHealthPoint}} / {{game.settings.character.healthPoint}}
+        {{game.settings.character.restingHealthPoint}} / {{game.settings.character.healthPoint}} <mat-icon aria-hidden="false" aria-label="Example favorite icon">favorite</mat-icon>
         <mat-progress-bar
           [color]="'warn'"
           [mode]="'determinate'"
@@ -70,43 +70,91 @@
         </mat-card-header>
         <mat-card-content>
           <img src="/assets/images/{{game.editionName}}/{{tile.land}}.jpg"/>
+          <span>{{tile.latitude}} / {{tile.longitude}}</span>
         </mat-card-content>
         <mat-card-actions>
-          <button *ngIf="!tile.isExplored" #tooltip="matTooltip"
+          <!-- <a *ngIf="!tile.isExplored" #tooltip="matTooltip"
           matTooltip="Explore this land"
-          [matTooltipPosition]="'above'" mat-button (click)="explore(tile)"><mat-icon aria-hidden="false" aria-label="Example explore icon">explore</mat-icon></button>
+          [matTooltipPosition]="'above'" mat-button href="./game/{{game.id}}/{{tile.guid}}"><mat-icon aria-hidden="false" aria-label="Example explore icon">explore</mat-icon></a> -->
+          <button #tooltip="matTooltip"
+          matTooltip="Explore this land."
+          [matTooltipPosition]="'above'" *ngIf="!tile.isExplored" mat-button (click)="explore(tile.guid)"><mat-icon aria-hidden="false" aria-label="Example explore icon">explore</mat-icon></button>
           <mat-icon *ngIf="tile.isExplored" aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon>
+          <mat-icon *ngIf="tile.isActual" aria-hidden="false" aria-label="Example accessibility icon">accessibility</mat-icon>
           <mat-icon *ngIf="tile.isStart" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          <button #tooltip="matTooltip"
+          matTooltip="Go to this explored land."
+          [matTooltipPosition]="'above'" *ngIf="tile.isExplored && !tile.isActual" mat-button (click)="goTo(tile.guid)" class="goTo"><mat-icon aria-hidden="false" aria-label="Example hiking icon">hiking</mat-icon></button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
 
-  <div class="inventory">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Inventory</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-card *ngFor="let item of game.settings.items" class="artifact">
-          <mat-card-header>
-            <mat-card-title>{{item.title}}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <img src="/assets/images/{{game.editionName}}/{{item.codeName}}.jpg"/>
-          </mat-card-content>
-          <mat-card-actions>
-            <button #tooltip="matTooltip"
-            matTooltip="Equip artifact"
-            [matTooltipPosition]="'above'" mat-button (click)="useArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
-            <button #tooltip="matTooltip"
-            matTooltip="Remove artifact"
-            [matTooltipPosition]="'above'" mat-button (click)="removeArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
-          </mat-card-actions>
-        </mat-card>
-      </mat-card-content>
-      <mat-card-actions>
-      </mat-card-actions>
-    </mat-card>
+  <div class="manage">
+    <div class="inventory">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Inventory</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="game.settings.items.length > 0">
+            <mat-card *ngFor="let item of game.settings.items" class="artifact">
+              <mat-card-header>
+                <mat-card-title>{{item.title}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <img src="/assets/images/{{game.editionName}}/{{item.codeName}}.jpg"/>
+              </mat-card-content>
+              <mat-card-actions>
+                <button #tooltip="matTooltip"
+                matTooltip="Equip artifact"
+                [matTooltipPosition]="'above'" mat-button (click)="useArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+                <button #tooltip="matTooltip"
+                matTooltip="Remove artifact"
+                [matTooltipPosition]="'above'" mat-button (click)="removeArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div *ngIf="game.settings.items.length == 0">
+            No artifacts
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="spells">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Spells</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="game.settings.spells.length > 0">
+            <mat-card *ngFor="let item of game.settings.spells" class="artifact">
+              <mat-card-header>
+                <mat-card-title>{{item.title}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <img src="/assets/images/{{game.editionName}}/{{item.codeName}}.jpg"/>
+              </mat-card-content>
+              <mat-card-actions>
+                <button #tooltip="matTooltip"
+                matTooltip="Equip artifact"
+                [matTooltipPosition]="'above'" mat-button (click)="useArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+                <button #tooltip="matTooltip"
+                matTooltip="Remove artifact"
+                [matTooltipPosition]="'above'" mat-button (click)="removeArtifact(game.settings.character.firstArtifact)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div *ngIf="game.settings.spells.length == 0">
+            No spells
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>

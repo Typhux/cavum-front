@@ -23,15 +23,28 @@ export class BoardComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.boardService.getGame(this.id).subscribe(response => {
-        this.game = <Game>response;
-        this.game.level = this.game.settings.character.blueMana + this.game.settings.character.blackMana + this.game.settings.character.greenMana + this.game.settings.character.redMana + this.game.settings.character.whiteMana;
-        this.pourcentageHp = (100 * this.game.settings.character.restingHealthPoint) / this.game.settings.character.healthPoint;
+        var resGame = <Game>response;
+        if(resGame.settings.fight){
+          location.href = './game/' + resGame.id + '/' + resGame.settings.fight;
+        }else{
+          this.game = resGame;
+          this.pourcentageHp = (100 * this.game.settings.character.restingHealthPoint) / this.game.settings.character.healthPoint;
+        }
       })
     })
   }
 
-  explore(tile: Tile){
+  explore(guid: string){
+    this.boardService.explore(this.id, guid).subscribe(response => {
+      this.game = <Game>response;
+      location.href="./game/" + this.id + "/" + guid;
+    })
+  }
 
+  goTo(guid: string){
+    this.boardService.goTo(this.id, guid).subscribe(response => {
+      this.game = <Game>response;
+    })
   }
 
   useArtifact(card: Card){

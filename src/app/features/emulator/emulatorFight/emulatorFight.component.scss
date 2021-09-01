@@ -1,0 +1,396 @@
+.title{
+  display: flex;
+  flex-direction: row;
+
+  a{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
+
+
+.emulator{
+
+  display: flex;
+  flex-direction: row;
+  .Island{
+    background-color: rgb(70, 141, 223);
+  }
+  .Plain{
+    background-color: rgb(202, 211, 124);
+  }
+
+  .Mountain{
+    background-color: rgb(207, 102, 84);
+  }
+
+  .Forest{
+    background-color: rgb(24, 92, 52);
+  }
+
+  .Swamp{
+    background-color: rgb(80, 82, 83);
+  }
+
+  .character{
+    min-width: 330px;
+    text-align: center;
+
+    .pv{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .healthPoint{
+        padding-top: 5px;
+        font-size: x-large;
+      }
+
+      }
+
+      .power{
+        font-size: x-large;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .effects{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
+        .effect{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 40px;
+          flex-flow: wrap;
+          margin: 10px;
+        }
+      }
+
+      .enchantements{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 400px;
+        .enchantement{
+          margin-right: 10px;
+          img{
+            width: 45px;
+          }
+        }
+      }
+
+      .artifacts{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        .artifact{
+          max-width: 115px;
+          max-height: 175px;
+          min-width: 115px;
+          min-height: 175px;
+          margin: 5px;
+
+          img{width: 100px;}
+
+          mat-card-title{font-size: initial;}
+        }
+      }
+
+    .mana{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 274px;
+      font-size: 25px;
+      justify-content: center;
+      height: 45px;
+
+      img{
+        height: 13px;
+      }
+    }
+
+    mat-card{
+      height: 100%;
+    }
+  }
+
+  .manage{
+    height: 100%;
+
+    .inventory{
+      min-width: 330px;
+      text-align: center;
+      margin-bottom: 10px;
+
+      mat-card-content{
+        display: flex;
+        flex-direction: row;
+      }
+      img{width: 100px;}
+
+      mat-card-title{font-size: initial;}
+
+      mat-card{
+        max-width: 115px;
+        max-height: 175px;
+        min-width: 115px;
+        min-height: 175px;
+        margin: 5px;
+      }
+    }
+
+    .spells{
+      min-width: 330px;
+      text-align: center;
+
+      mat-card{
+        min-height: 184px;
+        height: 100%;
+      }
+    }
+  }
+
+.interface{
+
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+  .field{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 2;
+    width: 40%;
+    margin-right: 10px;
+
+    .enemy{
+      margin-bottom: 50px;
+
+      mat-card-header{
+        justify-content: space-between;
+      }
+
+      mat-card-content{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-height: 500px;
+        overflow: auto;
+
+        .cardCreature{
+          margin-right: 10px;
+          margin-bottom: 5px;
+          min-height: 405px;
+
+          mat-card-header{
+            button{
+              margin-top: -15px;
+              margin-right: -20px;
+            }
+          }
+
+          mat-card-content{
+            display: flex;
+            flex-direction: column;
+            min-height: 310px;
+
+            .effects{
+              margin-top: 20px;
+              display: flex;
+              min-height: 45px;
+
+              .effect{
+                display: flex;
+                flex-direction: column;
+                width: 40px;
+                flex-flow: wrap;
+                justify-content: center;
+                margin: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ally{
+      margin-bottom: 50px;
+
+      mat-card-header{
+        justify-content: space-between;
+      }
+
+      mat-card-content{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-height: 360px;
+        overflow: auto;
+
+        .allies{
+          display: flex;
+          max-width: 975px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .cardCreature{
+          margin-right: 10px;
+          margin-bottom: 5px;
+
+          mat-card-header{
+            button{
+              margin-top: -15px;
+              margin-right: -20px;
+            }
+          }
+
+          mat-card-content{
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+
+    .pv{
+      text-align: center;
+    }
+
+    .cardCreature{
+      max-width: 275px;
+    }
+  }
+
+  .journal{
+    flex: 1;
+
+    mat-card-title{
+      span{
+        vertical-align: initial;
+        margin-left: 290px;
+      }
+    }
+
+    .logs{
+      min-height: 455px;
+      max-height: 455px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    span{
+      vertical-align: super;
+    }
+
+    mat-card-content{
+      background-color: wheat;
+      color: black;
+      padding: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.changeValue{
+  display: flex;
+  flex-direction: column;
+
+  button{
+    height: 20px;
+    min-width: 27px;
+    padding: 0;
+  }
+
+  mat-icon{
+    vertical-align: baseline;
+  }
+}
+
+.manage{
+  .inventory{
+    margin-bottom: 50px;
+
+    mat-card-header{
+      justify-content: space-between;
+    }
+
+    mat-card-content{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-height: 360px;
+      overflow: auto;
+
+      .artifact{
+        margin-right: 10px;
+        margin-bottom: 5px;
+        max-height: 295px;
+
+        mat-card-header{
+          button{
+            margin-top: -15px;
+            margin-right: -20px;
+          }
+        }
+
+        mat-card-content{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  .spells{
+    margin-bottom: 50px;
+
+    mat-card-header{
+      justify-content: space-between;
+    }
+
+    mat-card-content{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-height: 360px;
+      overflow: auto;
+
+      .spell{
+        margin-right: 10px;
+        margin-bottom: 5px;
+        max-height: 295px;
+
+        mat-card-header{
+          button{
+            margin-top: -15px;
+            margin-right: -20px;
+          }
+        }
+
+        mat-card-content{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

@@ -13,7 +13,9 @@ export class TreatmentComponent {
   constructor(private treatmentService: TreatmentService) { }
 
   treatCodeName() {
-   this.treatmentService.treatCard(this.codeName);
+   this.treatmentService.treatCard(this.codeName).subscribe(response =>{
+     console.log("Treatment done.")
+   });
   }
 
   treatAll() {

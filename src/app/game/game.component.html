@@ -34,9 +34,12 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
+        <button #tooltip="matTooltip"
+        matTooltip="This character is dead."
+        [matTooltipPosition]="'above'" *ngIf="game.settings.character.isDead" mat-button><mat-icon aria-hidden="false" aria-label="Example report icon">report</mat-icon></button>
         <a #tooltip="matTooltip"
         matTooltip="Launch this game"
-        [matTooltipPosition]="'above'" mat-button href="./game/{{game.id}}"><mat-icon aria-hidden="false" aria-label="Example label_important icon">label_important</mat-icon></a>
+        [matTooltipPosition]="'above'" *ngIf="!game.settings.character.isDead" mat-button href="./game/{{game.id}}"><mat-icon aria-hidden="false" aria-label="Example label_important icon">label_important</mat-icon></a>
         <button #tooltip="matTooltip"
         matTooltip="Copy seed"
         [matTooltipPosition]="'above'" mat-button (click)="copyGuid(game.guid)"><mat-icon aria-hidden="false" aria-label="Example content_copy icon">content_copy</mat-icon></button>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CardDetailsComponent } from './features/card/card-details/card-details.component';
 import { CardComponent } from './features/card/card.component';
 import { NewCardComponent } from './features/card/new-card/new-card.component';
@@ -21,12 +21,16 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { GameComponent } from './game/game.component';
 import { BoardComponent } from './game/board/board.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { FightComponent } from './game/fight/fight.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EmulatorFightComponent } from './features/emulator/emulatorFight/emulatorFight.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 const routes: Routes = [
   { path: '',   redirectTo: 'game', pathMatch: 'full' },
   { path: 'game', component: GameComponent },
   { path: 'game/:id', component: BoardComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'game/:id/:guid', component: FightComponent },
   { path: 'admin/edition', component: EditionComponent},
   {  path: 'admin/edition/new', component: NewEditionComponent},
   {  path: 'admin/edition/:id', component: EditionDetailsComponent},
@@ -36,6 +40,7 @@ const routes: Routes = [
   {  path: 'admin/card/new', component: NewCardComponent},
   {  path: 'admin/search', component: SearchComponent},
   {  path: 'admin/emulator', component: EmulatorComponent},
+  {  path: 'admin/emulator/:id', component: EmulatorFightComponent},
   {  path: 'admin/treatment', component: TreatmentComponent},
   {  path: 'admin/card/:id', component: CardDetailsComponent}
 ];
@@ -51,6 +56,10 @@ const routes: Routes = [
     MatPaginatorModule,
     MatFormFieldModule,
     MatTooltipModule,
-    MatProgressBarModule]
+    MatProgressBarModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule]
 })
 export class AppRoutingModule { }

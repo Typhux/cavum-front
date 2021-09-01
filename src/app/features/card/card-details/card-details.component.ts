@@ -54,10 +54,10 @@ export class CardDetailsComponent implements OnInit {
   }
 
     deleteCard() {
-      if (confirm('Are you to delete this Card ?')) {
-        this.cardService.deleteCard(this.id).subscribe(response => {
-          this.router.navigateByUrl('admin/card');
-      });
-    }
+        if (confirm('Are you sure to delete this Card ?')) {
+          this.cardService.deleteCard(this.id).subscribe(response => {
+            this.router.navigateByUrl('admin/card');
+        });
+      }
     }
   }

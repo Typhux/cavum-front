@@ -1,0 +1,7 @@
+<div class="error" *ngIf="error">
+  <h1>{{error.message}}</h1>
+  <button #tooltip="matTooltip"
+  matTooltip="Done"
+  [matTooltipPosition]="'above'" mat-button (click)="done()">
+  <mat-icon aria-hidden="false" aria-label="Example done icon">done</mat-icon></button>
+</div>

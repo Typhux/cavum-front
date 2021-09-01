@@ -1,0 +1,49 @@
+<h1>You win this land !</h1>
+
+<h2>Choose a reward</h2>
+<div class="pickReward">
+  <mat-card class="reward-card">
+    <mat-card-header>
+      <mat-card-title>Power</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span>Increase your power</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Pick power"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="'power'">
+      <mat-icon aria-hidden="false" aria-label="Example star_rate icon">star_rate</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="reward-card">
+    <mat-card-header>
+      <mat-card-title>Defense</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span>Increase your defense</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Pick defense"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="'defense'">
+      <mat-icon aria-hidden="false" aria-label="Example shield icon">shield</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="reward-card">
+    <mat-card-header>
+      <mat-card-title>Spells</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span>Pick a spell</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Pick spell"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="'spell'">
+      <mat-icon aria-hidden="false" aria-label="Example auto_stories icon">auto_stories</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>

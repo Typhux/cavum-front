@@ -1,0 +1,59 @@
+<h1>Pick a slot</h1>
+
+<h2>Choose a slot</h2>
+<div class="pickSlot">
+  <mat-card class="artifact-card" *ngIf="data.firstArtifact">
+    <mat-card-header>
+      <mat-card-title>{{data.firstArtifact.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img src="/assets/images/{{data.firstArtifact.editionName}}/{{data.firstArtifact.codeName}}.jpg"/>
+      <span>{{data.firstArtifact.type}}</span>
+      <p>{{data.firstArtifact.commentary}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Select this slot"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="1">
+      <mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="artifact-card" *ngIf="data.firstArtifact == null">
+    <mat-card-title>Empty</mat-card-title>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Select this slot"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="1">
+      <mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="artifact-card" *ngIf="data.secondArtifact">
+    <mat-card-header>
+      <mat-card-title>{{data.secondArtifact.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img src="/assets/images/{{data.secondArtifact.editionName}}/{{data.secondArtifact.codeName}}.jpg"/>
+      <span>{{data.secondArtifact.type}}</span>
+      <p>{{data.secondArtifact.commentary}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Select this slot"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="2">
+      <mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="artifact-card" *ngIf="data.secondArtifact == null">
+    <mat-card-title>Empty</mat-card-title>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Select this slot"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="2">
+      <mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>

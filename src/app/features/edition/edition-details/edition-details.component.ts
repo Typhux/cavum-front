@@ -18,8 +18,10 @@ export class EditionDetailsComponent implements OnInit {
   update: boolean = false;
   private id: number;
   private isSorted: boolean = false;
+  private research: string;
   displayedColumns: string[] = ['id', 'title', 'image', 'commentary', 'mechanic', 'subType', 'codeName'];
   dataSource: MatTableDataSource<Card>;
+  display: boolean = false;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -33,6 +35,11 @@ export class EditionDetailsComponent implements OnInit {
       this.id = params['id'];
       this.editionService.getEdition(this.id).subscribe(response => {
         this.edition = <any>response;
+
+        if(this.edition.cards.length > 0){
+          this.display = true;
+        }
+
         this.dataSource = new MatTableDataSource<Card>(this.edition.cards);
         this.dataSource.paginator = this.paginator;
       });
@@ -63,7 +70,18 @@ export class EditionDetailsComponent implements OnInit {
         this.editionService.deleteEdition(this.id).subscribe(response => {
         this.router.navigateByUrl('admin/edition');
         });
+      }
     }
+
+    launchResearch(){
+      this.display = false;
+        this.editionService.launchResearch(this.id, this.research).subscribe(response => {
+          var cards = <any>response;
+          if(cards.length > 0){
+            this.display = true;
+          }
+          this.dataSource = new MatTableDataSource<Card>(cards);
+      });
     }
 }
 

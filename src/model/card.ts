@@ -21,6 +21,13 @@ export class Card {
   public isTreated: boolean;
   public editionLogo: string;
   public editionName: string;
+  public restingHealthPoint: number;
+  public pourcentageHp: number;
+  public stringType: Array<string>;
+  public skill: Array<string>;
+  public uniqueId: string;
+  public resolved: Card;
+  public rewarded: string;
 
   constructor() {
   }

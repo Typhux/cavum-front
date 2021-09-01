@@ -12,6 +12,14 @@ export class Character {
   public healthPoint: number;
   public restingHealthPoint: number;
   public power: number;
+  public allies: Array<Card>;
+  public level: number;
+  public waiting: boolean;
+  public isDead: boolean;
+  public isStun: boolean;
+  public enchantements: Array<Card>;
+  public skill: Array<string>;
+
 
   constructor() {  }
 }

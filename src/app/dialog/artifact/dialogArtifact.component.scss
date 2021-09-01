@@ -1,0 +1,20 @@
+.pickSlot{
+  display: flex;
+  flex-direction: row;
+  mat-card{
+    max-width: 275px;
+    margin: 10px;
+  }
+
+  mat-card-content{
+    min-height: 289px;
+  }
+
+  mat-card-actions{
+    text-align: center;
+  }
+
+  .artifact-card{
+    min-width: 275px;
+  }
+}

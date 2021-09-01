@@ -8,7 +8,7 @@ export class GameService {
 
   newGame() {
     var id = 3;
-    return this.http.get('/api/game/new/'  + id);
+    return this.http.get('/api/game/new/' + id);
   }
 
   getGames(){
@@ -17,5 +17,9 @@ export class GameService {
 
   deleteGame(id: number){
     return this.http.delete('/api/game/' + id);
+  }
+
+  getGame(id:number){
+    return this.http.get('/api/game/' + id);
   }
 }

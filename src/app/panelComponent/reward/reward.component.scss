@@ -1,0 +1,13 @@
+.pickReward{
+  display: flex;
+  flex-direction: row;
+
+  .reward-card{
+    margin: 10px;
+    min-width: 170px;
+
+    mat-card-actions{
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="select" *ngIf="items">
+  <h1>{{items.spell.title}}</h1>
+  <h2 *ngIf="items.cards.length > 0">{{items.message}}</h2>
+  <div class="enemies" *ngIf="items.cards.length > 0">
+    <mat-card class="cardCreature" *ngFor="let card of items.cards">
+      <mat-card-header>
+        <mat-card-title>{{card.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img src="/assets/images/{{card.editionName}}/{{card.codeName}}.jpg"/>
+      </mat-card-content>
+      <mat-card-actions>
+        <button #tooltip="matTooltip"
+          matTooltip="Select this one"
+          [matTooltipPosition]="'above'" mat-button (click)="select(card)"><mat-icon aria-hidden="false" aria-label="Example done icon">done</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="items.cards.length == 0">
+    <h2>No target</h2>
+  </div>
+  <button #tooltip="matTooltip"
+          matTooltip="Cancel"
+          [matTooltipPosition]="'above'" mat-button (click)="cancel()"><mat-icon aria-hidden="false" aria-label="Example cancel icon">cancel</mat-icon></button>
+</div>

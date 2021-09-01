@@ -1,0 +1,19 @@
+<h1>{{data.title}}</h1>
+
+<h2>Please enter a card code name</h2>
+<div class="newEmulator">
+  <input type="text" id="codeName" [formControl]="control" [(ngModel)]="codeName" [matAutocomplete]="auto"/>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option}}
+    </mat-option>
+</mat-autocomplete>
+  <div class="button">
+    <button #tooltip="matTooltip"
+    matTooltip="Done."
+    [matTooltipPosition]="'above'" mat-button mat-button [mat-dialog-close]="codeName"><mat-icon aria-hidden="false" aria-label="Example done icon">done</mat-icon></button>
+    <button #tooltip="matTooltip"
+          matTooltip="Cancel."
+          [matTooltipPosition]="'above'" mat-button [mat-dialog-close]=""><mat-icon aria-hidden="false" aria-label="Example cancel icon">cancel</mat-icon></button>
+    </div>
+</div>

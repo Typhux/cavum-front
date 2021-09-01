@@ -1,0 +1,16 @@
+
+
+.emulators{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .emulator{
+    margin: 10px;
+
+    mat-card{
+      width: 160px;
+    }
+  }
+}

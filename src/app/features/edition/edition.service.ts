@@ -22,4 +22,12 @@ export class EditionService {
   deleteEdition(id: number) {
     return this.http.delete('/api/edition/' + id);
   }
+
+  launchResearch(id: number, research: string){
+    if(research == "")
+    research = null
+
+    if(research == null || research.length >= 3)
+    return this.http.get('/api/edition/' + id + '/' + research);
+  }
 }

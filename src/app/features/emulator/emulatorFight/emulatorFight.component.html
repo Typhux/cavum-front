@@ -1,0 +1,614 @@
+<div class="title">
+  <a #tooltip="matTooltip"
+  matTooltip="Done."
+  [matTooltipPosition]="'above'" mat-button href="./admin/emulator"><mat-icon aria-hidden="false" aria-label="Example arrow_back_ios icon">arrow_back_ios</mat-icon></a>
+  <h1>Emulator Fight</h1>
+  <a #tooltip="matTooltip"
+    matTooltip="Reset"
+    [matTooltipPosition]="'above'" mat-button (click)="reset()"><mat-icon aria-hidden="false" aria-label="Example restart_alt icon">restart_alt</mat-icon></a>
+</div>
+
+<div class="emulator" *ngIf="emulator">
+  <div class="character">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Character Level {{emulator.settings.character.level}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="mana">
+          {{emulator.settings.character.blueMana}} <img src="/assets/color/u.gif"/>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one blue mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.blueMana = emulator.settings.character.blueMana + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one blue mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.blueMana = emulator.settings.character.blueMana - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+          {{emulator.settings.character.whiteMana}} <img src="/assets/color/w.gif"/>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one white mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.whiteMana = emulator.settings.character.whiteMana + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one white mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.whiteMana = emulator.settings.character.whiteMana - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+          {{emulator.settings.character.blackMana}} <img src="/assets/color/b.gif"/>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one black mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.blackMana = emulator.settings.character.blackMana + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one black mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.blackMana = emulator.settings.character.blackMana - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+          {{emulator.settings.character.greenMana}} <img src="/assets/color/g.gif"/>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one green mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.greenMana = emulator.settings.character.greenMana + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one green mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.greenMana = emulator.settings.character.greenMana - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+          {{emulator.settings.character.redMana}} <img src="/assets/color/r.gif"/>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one red mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.redMana = emulator.settings.character.redMana + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one red mana"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.redMana = emulator.settings.character.redMana - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+      </div>
+
+      <div class="pv">
+        <div class="healthPoint">{{emulator.settings.character.restingHealthPoint}} / {{emulator.settings.character.healthPoint}}</div>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one health point"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.healthPoint = emulator.settings.character.healthPoint + 1; emulator.settings.character.restingHealthPoint = emulator.settings.character.healthPoint; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one health point"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.healthPoint = emulator.settings.character.healthPoint - 1; emulator.settings.character.restingHealthPoint = emulator.settings.character.healthPoint; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+        </div>
+      </div>
+      <div class="power">
+          <div class="displayPower">
+            {{emulator.settings.character.power}}<mat-icon aria-hidden="false" aria-label="Example star_rate icon">star_rate</mat-icon>
+          </div>
+          <div class="changeValue">
+            <button #tooltip="matTooltip"
+            matTooltip="Add one power"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.power = emulator.settings.character.power + 1; save();"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+            <button #tooltip="matTooltip"
+            matTooltip="Remove one power"
+            [matTooltipPosition]="'above'" mat-button (click)="emulator.settings.character.power = emulator.settings.character.power - 1; save();"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+      </div>
+      </div>
+      <div class="effects">
+        <div *ngFor="let skill of emulator.settings.character.skill">
+          <div *ngIf="skill.indexOf('Stun') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example blur_on icon">blur_on</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+          <div *ngIf="skill == 'Duel'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example voice_over_off icon">voice_over_off</mat-icon>
+            <span>Duel</span>
+          </div>
+          <div *ngIf="skill == 'Fly'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example air icon">air</mat-icon>
+            <span>Fly</span>
+          </div>
+          <div *ngIf="skill == 'Dead'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example report_problem icon">report_problem</mat-icon>
+            <span>Dead</span>
+          </div>
+          <div *ngIf="skill == 'FirstStrike'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example arrow_right_alt icon">arrow_right_alt</mat-icon>
+            <span>FS</span>
+          </div>
+          <div *ngIf="skill == 'DoubleStrike'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example double_arrow icon">double_arrow</mat-icon>
+            <span>DS</span>
+          </div>
+          <div *ngIf="skill == 'Renown'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example grade icon">grade</mat-icon>
+            <span>Renown</span>
+          </div>
+          <div *ngIf="skill == 'Blessed'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example brightness_5 icon">brightness_5</mat-icon>
+            <span>Blessed</span>
+          </div>
+          <div *ngIf="skill == 'Vigilance'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example security icon">security</mat-icon>
+            <span>Vigilance</span>
+          </div>
+          <div *ngIf="skill == 'Flash'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example flash_on icon">flash_on</mat-icon>
+            <span>Flash</span>
+          </div>
+          <div *ngIf="skill == 'Mute'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example do_not_disturb_on_total_silence icon">do_not_disturb_on_total_silence</mat-icon>
+            <span>Mute</span>
+          </div>
+          <div *ngIf="skill == 'Haste'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example eject icon">eject</mat-icon>
+            <span>Haste</span>
+          </div>
+          <div *ngIf="skill == 'Echo'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example share icon">share</mat-icon>
+            <span>Echo</span>
+          </div>
+          <div *ngIf="skill == 'Wisdom'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example psychology icon">psychology</mat-icon>
+            <span>Wisdom</span>
+          </div>
+          <div *ngIf="skill == 'Trample'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example pets icon">pets</mat-icon>
+            <span>Trample</span>
+          </div>
+          <div *ngIf="skill == 'Reach'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example celebration icon">celebration</mat-icon>
+            <span>Reach</span>
+          </div>
+          <div *ngIf="skill == 'Deathtouch'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example gesture icon">gesture</mat-icon>
+            <span>Deathtouch</span>
+          </div>
+          <div *ngIf="skill == 'Deathlink'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example heart_broken icon">heart_broken</mat-icon>
+            <span>Deathlink</span>
+          </div>
+          <div *ngIf="skill == 'Menace'" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example sports_mma icon">sports_mma</mat-icon>
+            <span>Menace</span>
+          </div>
+          <div *ngIf="skill.indexOf('Counter') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example fingerprint icon">fingerprint</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+          <div *ngIf="skill.indexOf('Weak') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example trending_down icon">trending_down</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+          <div *ngIf="skill.indexOf('Breach') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example stream icon">stream</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+          <div *ngIf="skill.indexOf('Scry') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+          <div *ngIf="skill.indexOf('Hire') != -1" class="effect">
+            <mat-icon  aria-hidden="false" aria-label="Example radio_button_checked icon">radio_button_checked</mat-icon>
+            <span>{{skill}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="enchantements">
+        <div class="enchantement" #tooltip="matTooltip" matTooltip="{{enchantement.type}}: {{enchantement.commentary}}" [matTooltipPosition]="'above'" *ngFor="let enchantement of emulator.settings.character.enchantements">
+          <img src="/assets/images/{{emulator.editionName}}/{{enchantement.codeName}}.jpg"/>
+        </div>
+      </div>
+
+      <div class="artifacts">
+        <mat-card #tooltip="matTooltip" matTooltip="{{emulator.settings.character.firstArtifact.commentary}}" [matTooltipPosition]="'above'" *ngIf="emulator.settings.character.firstArtifact" class="artifact">
+          <mat-card-header>
+            <mat-card-title>{{emulator.settings.character.firstArtifact.title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <img src="/assets/images/{{emulator.editionName}}/{{emulator.settings.character.firstArtifact.codeName}}.jpg"/>
+          </mat-card-content>
+          <mat-card-actions>
+            <button #tooltip="matTooltip"
+            matTooltip="Put artifact in inventory"
+            [matTooltipPosition]="'above'" mat-button (click)="unEquipArtifact(1)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card #tooltip="matTooltip" matTooltip="{{emulator.settings.character.firstArtifact.commentary}}" [matTooltipPosition]="'above'" *ngIf="emulator.settings.character.secondArtifact" class="artifact">
+          <mat-card-header>
+            <mat-card-title>{{emulator.settings.character.secondArtifact.title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <img src="/assets/images/{{emulator.editionName}}/{{emulator.settings.character.secondArtifact.codeName}}.jpg"/>
+          </mat-card-content>
+          <mat-card-actions><button #tooltip="matTooltip"
+            matTooltip="Put artifact in inventory"
+            [matTooltipPosition]="'above'" mat-button (click)="unEquipArtifact(2)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="interface">
+    <div class="field">
+      <mat-card class="enemy">
+        <mat-card-header>
+          <mat-card-title>Enemies</mat-card-title>
+          <button #tooltip="matTooltip"
+                    matTooltip="Add an enemy"
+                    [matTooltipPosition]="'above'" mat-button (click)="addEnemy()"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+        </mat-card-header>
+        <mat-card-content>
+              <mat-card class="cardCreature" *ngFor="let event of emulator.settings.creatures; index as i">
+                <mat-card-header>
+                  <mat-card-title>{{event.title}}</mat-card-title>
+                  <button #tooltip="matTooltip"
+                            matTooltip="{{event.mechanic}}"
+                            [matTooltipPosition]="'above'" mat-button><mat-icon aria-hidden="false" aria-label="Example remove_red_eye icon">remove_red_eye</mat-icon></button>
+                  <button *ngIf="emulator.settings.creatures.length > 1" #tooltip="matTooltip"
+                    matTooltip="Remove this enemy"
+                    [matTooltipPosition]="'above'" mat-button (click)="removeEnemy(i)"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+                </mat-card-header>
+                <mat-card-content>
+                  <img src="/assets/images/{{emulator.editionName}}/{{event.codeName}}.jpg"/>
+                  <div class="type">
+                    <span *ngFor="let type of event.stringType">{{type}} </span>
+                  </div>
+                  <div class="pv">
+                    {{event.restingHealthPoint}} / {{event.defense}}
+                  </div>
+                  <div class="effects">
+                    <div *ngFor="let skill of event.skill">
+                      <div *ngIf="skill.indexOf('Stun') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example blur_on icon">blur_on</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill == 'Duel'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example voice_over_off icon">voice_over_off</mat-icon>
+                        <span>Duel</span>
+                      </div>
+                      <div *ngIf="skill == 'Fly'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example air icon">air</mat-icon>
+                        <span>Fly</span>
+                      </div>
+                      <div *ngIf="skill == 'Dead'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example report_problem icon">report_problem</mat-icon>
+                        <span>Dead</span>
+                      </div>
+                      <div *ngIf="skill == 'FirstStrike'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example arrow_right_alt icon">arrow_right_alt</mat-icon>
+                        <span>FS</span>
+                      </div>
+                      <div *ngIf="skill == 'DoubleStrike'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example double_arrow icon">double_arrow</mat-icon>
+                        <span>DS</span>
+                      </div>
+                      <div *ngIf="skill == 'Renown'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example grade icon">grade</mat-icon>
+                        <span>Renown</span>
+                      </div>
+                      <div *ngIf="skill == 'Vigilance'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example security icon">security</mat-icon>
+                        <span>Vigilance</span>
+                      </div>
+                      <div *ngIf="skill == 'Flash'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example flash_on icon">flash_on</mat-icon>
+                        <span>Flash</span>
+                      </div>
+                      <div *ngIf="skill == 'Mute'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example do_not_disturb_on_total_silence icon">do_not_disturb_on_total_silence</mat-icon>
+                        <span>Mute</span>
+                      </div>
+                      <div *ngIf="skill == 'LifeLink'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example volunteer_activism icon">volunteer_activism</mat-icon>
+                        <span>LifeLink</span>
+                      </div>
+                      <div *ngIf="skill == 'Haste'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example eject icon">eject</mat-icon>
+                        <span>Haste</span>
+                      </div>
+                      <div *ngIf="skill == 'Prowess'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example verified icon">verified</mat-icon>
+                        <span>Prowess</span>
+                      </div>
+                      <div *ngIf="skill == 'Taunt'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example record_voice_over icon">record_voice_over</mat-icon>
+                        <span>Taunt</span>
+                      </div>
+                      <div *ngIf="skill == 'Defender'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example reorder icon">reorder</mat-icon>
+                        <span>Defender</span>
+                      </div>
+                      <div *ngIf="skill == 'Reach'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example celebration icon">celebration</mat-icon>
+                        <span>Reach</span>
+                      </div>
+                      <div *ngIf="skill == 'PBlue'" class="effect">
+                        <mat-icon  aria-hidden="false" style="color: blue;" aria-label="Example cancel icon">cancel</mat-icon>
+                        <span>PBlue</span>
+                      </div>
+                      <div *ngIf="skill == 'PBlack'" class="effect">
+                        <mat-icon  aria-hidden="false" style="color: black;" aria-label="Example cancel icon">cancel</mat-icon>
+                        <span>PBlack</span>
+                      </div>
+                      <div *ngIf="skill == 'PRed'" class="effect">
+                        <mat-icon  aria-hidden="false" style="color: red;" aria-label="Example cancel icon">cancel</mat-icon>
+                        <span>PRed</span>
+                      </div>
+                      <div *ngIf="skill == 'PWhite'" class="effect">
+                        <mat-icon  aria-hidden="false" style="color: yellow;" aria-label="Example cancel icon">cancel</mat-icon>
+                        <span>PWhite</span>
+                      </div>
+                      <div *ngIf="skill == 'PGreen'" class="effect">
+                        <mat-icon  aria-hidden="false" style="color: green;" aria-label="Example cancel icon">cancel</mat-icon>
+                        <span>PGreen</span>
+                      </div>
+                      <div *ngIf="skill == 'Trample'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example pets icon">pets</mat-icon>
+                        <span>Trample</span>
+                      </div>
+                      <div *ngIf="skill == 'Phase'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example layers_clear icon">layers_clear</mat-icon>
+                        <span>Phase</span>
+                      </div>
+                      <div *ngIf="skill == 'Indestructible'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example shield icon">shield</mat-icon>
+                        <span>Indestructible</span>
+                      </div>
+                      <div *ngIf="skill == 'Deathtouch'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example gesture icon">gesture</mat-icon>
+                        <span>Deathtouch</span>
+                      </div>
+                      <div *ngIf="skill == 'Deathlink'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example heart_broken icon">heart_broken</mat-icon>
+                        <span>Deathlink</span>
+                      </div>
+                      <div *ngIf="skill == 'Menace'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example sports_mma icon">sports_mma</mat-icon>
+                        <span>Menace</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Counter') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example fingerprint icon">fingerprint</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Weak') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example trending_down icon">trending_down</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Breach') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example stream icon">stream</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button #tooltip="matTooltip"
+                    matTooltip="Attack"
+                    [matTooltipPosition]="'above'" [disabled]="emulator.settings.character.skill.indexOf('Stun') != -1" mat-button (click)="attack()"><mat-icon aria-hidden="false" aria-label="Example waving_hand icon">waving_hand</mat-icon></button>
+                </mat-card-actions>
+              </mat-card>
+          </mat-card-content>
+      </mat-card>
+
+      <mat-card class="ally">
+        <mat-card-header>
+          <mat-card-title>Allies</mat-card-title>
+          <button #tooltip="matTooltip"
+                    matTooltip="Add an ally"
+                    [matTooltipPosition]="'above'" mat-button (click)="addAlly()"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="emulator.settings.character.allies.length > 0" class="allies">
+              <mat-card class="cardCreature" *ngFor="let ally of emulator.settings.character.allies; index as j">
+                <mat-card-header>
+                  <mat-card-title>{{ally.title}}</mat-card-title>
+                  <button #tooltip="matTooltip"
+                    matTooltip="Remove this ally"
+                    [matTooltipPosition]="'above'" mat-button (click)="removeAlly(j)"><mat-icon aria-hidden="false" aria-label="Example remove icon">remove</mat-icon></button>
+                </mat-card-header>
+                <mat-card-content>
+                  <img src="/assets/images/{{emulator.editionName}}/{{ally.codeName}}.jpg"/>
+                  <div class="pv">
+                    {{ally.restingHealthPoint}} / {{ally.defense}}
+                  </div>
+                  <div class="effects">
+                    <div *ngFor="let skill of ally.skill">
+                      <div *ngIf="skill.indexOf('Stun') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example blur_on icon">blur_on</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill == 'Duel'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example voice_over_off icon">voice_over_off</mat-icon>
+                        <span>Duel</span>
+                      </div>
+                      <div *ngIf="skill == 'Fly'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example air icon">air</mat-icon>
+                        <span>Fly</span>
+                      </div>
+                      <div *ngIf="skill == 'Dead'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example report_problem icon">report_problem</mat-icon>
+                        <span>Dead</span>
+                      </div>
+                      <div *ngIf="skill == 'FirstStrike'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example double_arrow icon">double_arrow</mat-icon>
+                        <span>FS</span>
+                      </div>
+                      <div *ngIf="skill == 'Renown'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example grade icon">grade</mat-icon>
+                        <span>Renown</span>
+                      </div>
+                      <div *ngIf="skill == 'Vigilance'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example security icon">security</mat-icon>
+                        <span>Vigilance</span>
+                      </div>
+                      <div *ngIf="skill == 'Flash'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example flash_on icon">flash_on</mat-icon>
+                        <span>Flash</span>
+                      </div>
+                      <div *ngIf="skill == 'Mute'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example do_not_disturb_on_total_silence icon">do_not_disturb_on_total_silence</mat-icon>
+                        <span>Mute</span>
+                      </div>
+                      <div *ngIf="skill == 'LifeLink'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example volunteer_activism icon">volunteer_activism</mat-icon>
+                        <span>LifeLink</span>
+                      </div>
+                      <div *ngIf="skill == 'Haste'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example eject icon">eject</mat-icon>
+                        <span>Haste</span>
+                      </div>
+                      <div *ngIf="skill == 'Prowess'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example verified icon">verified</mat-icon>
+                        <span>Prowess</span>
+                      </div>
+                      <div *ngIf="skill == 'Taunt'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example record_voice_over icon">record_voice_over</mat-icon>
+                        <span>Taunt</span>
+                      </div>
+                      <div *ngIf="skill == 'Defender'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example reorder icon">reorder</mat-icon>
+                        <span>Defender</span>
+                      </div>
+                      <div *ngIf="skill == 'Trample'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example pets icon">pets</mat-icon>
+                        <span>Trample</span>
+                      </div>
+                      <div *ngIf="skill == 'Indestructible'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example shield icon">shield</mat-icon>
+                        <span>Indestructible</span>
+                      </div>
+                      <div *ngIf="skill == 'Deathtouch'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example gesture icon">gesture</mat-icon>
+                        <span>Deathtouch</span>
+                      </div>
+                      <div *ngIf="skill == 'Deathlink'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example heart_broken icon">heart_broken</mat-icon>
+                        <span>Deathlink</span>
+                      </div>
+                      <div *ngIf="skill == 'Menace'" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example sports_mma icon">sports_mma</mat-icon>
+                        <span>Menace</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Counter') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example fingerprint icon">fingerprint</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Weak') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example trending_down icon">trending_down</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                      <div *ngIf="skill.indexOf('Breach') != -1" class="effect">
+                        <mat-icon  aria-hidden="false" aria-label="Example stream icon">stream</mat-icon>
+                        <span>{{skill}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button #tooltip="matTooltip"
+                    matTooltip="Vampire"
+                    [matTooltipPosition]="'above'" (click)="vampire(ally)" *ngIf="emulator.settings.character.skill.indexOf('Vampire') != -1" [disabled]="emulator.settings.character.skill.indexOf('Stun') != -1 && emulator.settings.currentTurn > 0"><mat-icon aria-hidden="false" aria-label="Example water_drop icon">water_drop</mat-icon></button>
+                </mat-card-actions>
+              </mat-card>
+          </div>
+          <div *ngIf="emulator.settings.character.allies.length == 0">
+            No allies
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="journal">
+      <mat-card class="journal">
+        <mat-card-header>
+          <mat-card-title>Combat journal <span>Turn {{emulator.settings.currentTurn}}</span></mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="logs">
+          <div *ngFor="let log of emulator.settings.logs">
+            <mat-icon aria-hidden="false" aria-label="Example chevron_right icon">chevron_right</mat-icon> <span>{{log}}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button #tooltip="matTooltip"
+            matTooltip="Next action"
+            [matTooltipPosition]="'above'" mat-button (click)="nextAction()"><mat-icon aria-hidden="false" aria-label="Example send icon">send</mat-icon></button>
+          <button #tooltip="matTooltip"
+          matTooltip="Simule End Fight"
+          [matTooltipPosition]="'above'" mat-button (click)="endFight()"><mat-icon aria-hidden="false" aria-label="Example label_off icon">label_off</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+</div>
+
+  <div class="manage">
+    <mat-card class="inventory">
+      <mat-card-header>
+        <mat-card-title>Inventory</mat-card-title>
+        <button #tooltip="matTooltip"
+        matTooltip="Add an artifact"
+        [matTooltipPosition]="'above'" mat-button (click)="addArtefact()"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="emulator.settings.items.length > 0">
+          <mat-card  #tooltip="matTooltip"
+          matTooltip="{{item.commentary}}"
+          [matTooltipPosition]="'above'" *ngFor="let item of emulator.settings.items; index as x" class="artifact">
+            <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <img src="/assets/images/{{emulator.editionName}}/{{item.codeName}}.jpg"/>
+            </mat-card-content>
+            <mat-card-actions>
+              <button #tooltip="matTooltip"
+              matTooltip="Equip artifact"
+              [matTooltipPosition]="'above'" mat-button (click)="equipArtifact(item)"><mat-icon aria-hidden="false" aria-label="Example build icon">build</mat-icon></button>
+              <button #tooltip="matTooltip"
+              matTooltip="Remove artifact"
+              [matTooltipPosition]="'above'" mat-button (click)="removeArtifact(x)"><mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon></button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div *ngIf="emulator.settings.items.length == 0">
+          No artifacts
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="spells">
+      <mat-card-header>
+        <mat-card-title>Spells</mat-card-title>
+        <button #tooltip="matTooltip"
+        matTooltip="Add a spell"
+        [matTooltipPosition]="'above'" mat-button (click)="addSpell()"><mat-icon aria-hidden="false" aria-label="Example add icon">add</mat-icon></button>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="emulator.settings.spells.length > 0">
+          <mat-card  #tooltip="matTooltip"
+          matTooltip="{{spell.type}}: {{spell.commentary}}"
+          [matTooltipPosition]="'above'"  *ngFor="let spell of emulator.settings.spells" class="spell">
+            <mat-card-header>
+              <mat-card-title>{{spell.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <img src="/assets/images/{{emulator.editionName}}/{{spell.codeName}}.jpg"/>
+            </mat-card-content>
+            <mat-card-actions>
+              <button #tooltip="matTooltip"
+              matTooltip="Select this spell"
+              [matTooltipPosition]="'above'" [disabled]="emulator.settings.character.skill.indexOf('Stun') != -1" mat-button (click)="playSpell(spell)">
+              <mat-icon aria-hidden="false" aria-label="Example bookmark_add icon">bookmark_add</mat-icon></button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div *ngIf="emulator.settings.spells.length == 0">
+          No spells
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

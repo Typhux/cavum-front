@@ -63,4 +63,13 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['admin/card/'+ idCard])
   }
 
+    deleteCard(id: number) {
+      if (confirm('Are you sure to delete this Card ?')) {
+        this.cardService.deleteCard(id).subscribe(response => {
+          this.search();
+      });
+    }
+  }
+
 }
+

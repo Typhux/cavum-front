@@ -1,0 +1,21 @@
+<h1>Pick spell</h1>
+
+<h2>Choose a spell</h2>
+<div class="pickSpell" *ngIf="game">
+  <mat-card *ngFor="let spell of spells" class="reward-card">
+    <mat-card-header>
+      <mat-card-title>{{spell.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img src="/assets/images/{{game.editionName}}/{{spell.codeName}}.jpg"/>
+      <span>{{spell.type}}</span>
+      <p>{{spell.commentary}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button #tooltip="matTooltip"
+      matTooltip="Select this spell"
+      [matTooltipPosition]="'above'" mat-button [mat-dialog-close]="spell.id">
+      <mat-icon aria-hidden="false" aria-label="Example bookmark_add icon">bookmark_add</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>

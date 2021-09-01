@@ -6,7 +6,11 @@ export class GameSettings {
 
   public tiles: Array<Tile>;
   public items: Array<Card>;
+  public spells: Array<Card>;
   public character: Character;
+  public fight: string;
+  public logs: Array<string>;
+  public currentTurn: number;
 
   constructor() {  }
 }

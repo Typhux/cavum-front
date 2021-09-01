@@ -1,5 +1,32 @@
-<input type="text" [(ngModel)]="codeName"/>
+<h1>Emulators</h1>
 
-<button (click)="emulate()">Emulate</button>
+<button #tooltip="matTooltip"
+      matTooltip="Launch a new emulator."
+      [matTooltipPosition]="'above'" mat-button (click)="newEmulator()"><mat-icon aria-hidden="false" aria-label="Example construction icon">construction</mat-icon> New Emulator</button>
 
-<app-simulator [card]="card"></app-simulator>
+<div class="emulators">
+  <div class="emulator" *ngFor="let emulator of emulators">
+    <mat-card class="emulator-card">
+      <mat-card-header>
+        <div mat-card-avatar class="card-header-image"></div>
+        <mat-card-title>{{emulator.editionName}}</mat-card-title>
+        <mat-card-subtitle>
+          <span>{{emulator.date | date}}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="creature" *ngFor="let creature of emulator.settings.creatures">
+          {{creature.title}}
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <a #tooltip="matTooltip"
+        matTooltip="Launch this emulator"
+        [matTooltipPosition]="'above'" mat-button href="./admin/emulator/{{emulator.id}}"><mat-icon aria-hidden="false" aria-label="Example label_important icon">label_important</mat-icon></a>
+        <button #tooltip="matTooltip"
+        matTooltip="Delete this emulator"
+        [matTooltipPosition]="'above'" mat-button (click)="deleteEmulator(emulator.id)"><mat-icon aria-hidden="false" aria-label="Example hide_source icon">hide_source</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

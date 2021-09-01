@@ -10,4 +10,12 @@ export class BoardService {
     return this.http.get('/api/game/' + id);
   }
 
+  explore(id: number, guid: string){
+    return this.http.get('/api/game/explore/' + id + '/' + guid);
+  }
+
+  goTo(id: number, guid: string){
+    return this.http.get('/api/game/goto/' + id + '/' + guid);
+  }
+
 }
